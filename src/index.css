@@ -1,0 +1,15 @@
+:root{
+  --pure-black : #000 ; 
+  --primary-black : #1a1a1a ; 
+  --secondary-black : #2c2b2b ; 
+  --main-green : #33b07a ; 
+  --glow-green : #0bb069 ; 
+  --primary-grey : #6d6d6d ; 
+  --primary-white : #fff ; 
+  --primary-red : rgb(250, 22, 22) ; 
+}
+
+.profile-icon{
+  height: 50px ; 
+  width: 50px ;
+}
