@@ -1,12 +1,27 @@
 import { useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {useNavigate} from 'react-router-dom'
 
 export default function SearchBar() {
   const [curr, setCurr] = useState(false);
+  const nav = useNavigate()
+  const [search, setSearch] = useState('')
+
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+
+    if(!search){
+      nav('/')
+      return;
+    }
+
+    nav(`/search/${search}`)
+  }
 
   return (
-    <div
+    <form
+     onSubmit={handleSubmit}
       className="search-box"
       style={{
         border: curr ? "2px solid var(--glow-green)" : "none",
@@ -15,6 +30,8 @@ export default function SearchBar() {
     >
       <FontAwesomeIcon className="search-icon" icon={faMagnifyingGlass} />
       <input
+        value={search}
+        onChange={e=>setSearch(e.target.value)}
         type="text"
         name=""
         id=""
@@ -22,6 +39,6 @@ export default function SearchBar() {
         onFocus={(e) => setCurr(!curr)}
         placeholder="Search..."
       />
-    </div>
+    </form>
   );
 }
