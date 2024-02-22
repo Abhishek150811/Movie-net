@@ -9,12 +9,17 @@ export default function MovieCard({ poster_path, title, rating, type, id }) {
   useEffect(()=>{
     let items = localStorage.getItem(type) || "{}"
     let itemsParsed = JSON.parse(items)
-    if(itemsParsed.hasOwnProperty(`${id}`)){
-      console.log("First time intilzing ") ; 
-      setIsBookmarked(true) ; 
+    let itemkeys = Object.keys(itemsParsed)
+
+    if(itemsParsed.hasOwnProperty(id)){
+      setIsBookmarked(true) ;
+    }
+    else{
+      setIsBookmarked(false) ;
+
     }
       
-  } , []) ; 
+  } , [id]) ; 
 
 
   const handleBookmark =() =>{

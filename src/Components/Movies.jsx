@@ -16,14 +16,14 @@ export default function Movies({ genre, movie }) {
     <div className="only-movie">
       {genre.map((item, index) => {
         return (
-          <div key={index} className="helper-div">
+          <div key={item} className="helper-div">
           <h1>{item}</h1>
           <div className="inner-display slider-container">
             <Slider {...settings}>
             {movie &&
                   movie[item].map((item2, index2) => {
                     return (
-                      <div className="testing2" key={index2}>
+                      <div className="testing2" key={item2.id}>
                         <MovieCard
                           type='movie'
                           id={item2.id}
