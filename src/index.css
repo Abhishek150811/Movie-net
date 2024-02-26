@@ -255,7 +255,6 @@ body{
   display: flex ; 
   flex-direction: column;
    margin: 0 2rem;
-   padding: 2rem 0;
    
 }
 .movie-card:hover{
@@ -322,7 +321,62 @@ body{
   margin: 1rem auto; 
 }
 
+/* Bookmark page styling */
+.bookmark-box{
+  width: 100vw ; 
+  min-height: 100vh;
 
+}
+.bookmark-box .movie-bookmark{
+  width: 90%;
+  margin: 8rem 0 2rem 7rem ; 
+  display: flex ; 
+  flex-direction: column;
+  /* border: 1px solid blue ;  */
+}
+.bookmark-box .movie-bookmark .helper{
+  display: flex;
+  justify-content: center;
+  gap: 10px ;
+  min-height: 100vh;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+
+.bookmark-box .movie-bookmark > h1{
+  text-align: center;
+  color: var(--primary-white) ;
+
+}
+.bookmark-box .movie-card{
+  width: 200px;
+}
+.bookmark-box .movie-card .remove-btn{
+  padding: 0.5rem 2rem ; 
+  color: red ;
+  outline: none ; 
+  border: none ; 
+  border-radius: 1rem;
+  background-color: rgb(19, 19, 19);
+  transition: 0.2 all ease-out;
+  margin: 0 auto ; 
+  display: block;
+}
+.bookmark-box .movie-card .remove-btn:hover{
+  background-color: #000;
+}
+.bookmark-box .fallback-bookmark{
+  height: 100vh;
+  width: 100vw ; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bookmark-box .fallback-bookmark h1{
+  color: var(--primary-white) ; 
+  word-spacing: 15px;
+}
 /* Message box styling */
 .message-box{
   width: 100vw ; 

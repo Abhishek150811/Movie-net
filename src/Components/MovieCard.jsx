@@ -1,50 +1,50 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-export default function MovieCard({ poster_path, title, rating, type, id }) {
-  const [isBookmarked , setIsBookmarked] = useState(false) ; 
+export default function MovieCard({
+  poster_path,
+  title,
+  rating,
+  type,
+  id,
+  handlebookmarkfunc,
+}) {
+  const [isBookmarked, setIsBookmarked] = useState(false);
 
-  useEffect(()=>{
-    let items = localStorage.getItem(type) || "{}"
-    let itemsParsed = JSON.parse(items)
-    let itemkeys = Object.keys(itemsParsed)
+  useEffect(() => {
+    let items = localStorage.getItem(type) || "{}";
+    let itemsParsed = JSON.parse(items);
+    let itemkeys = Object.keys(itemsParsed);
 
-    if(itemsParsed.hasOwnProperty(id)){
-      setIsBookmarked(true) ;
+    if (itemsParsed.hasOwnProperty(id)) {
+      setIsBookmarked(true);
+    } else {
+      setIsBookmarked(false);
     }
-    else{
-      setIsBookmarked(false) ;
+  }, [id]);
 
-    }
-      
-  } , [id]) ; 
-
-
-  const handleBookmark =() =>{
-    let items = localStorage.getItem(type) || "{}"
-    let itemsParsed = JSON.parse(items)
-    if(isBookmarked){
-      delete itemsParsed[`${id}`] ; 
-      setIsBookmarked(false) ; 
-    }
-    else{
+  const handleBookmark = () => {
+    let items = localStorage.getItem(type) || "{}";
+    let itemsParsed = JSON.parse(items);
+    if (isBookmarked) {
+      delete itemsParsed[`${id}`];
+      setIsBookmarked(false);
+    } else {
       let obj = {
         poster_path,
         title,
         rating,
         type,
-        
-      }
-      setIsBookmarked(true) ; 
-      itemsParsed[`${id}`] = obj ; 
+      };
+      setIsBookmarked(true);
+      itemsParsed[`${id}`] = obj;
     }
-    
-    console.log( isBookmarked ,  itemsParsed) ; 
-    localStorage.setItem(type, JSON.stringify(itemsParsed))
-  }
-  
+
+    // console.log( isBookmarked ,  itemsParsed) ;
+    localStorage.setItem(type, JSON.stringify(itemsParsed));
+  };
 
   return (
     <div className="movie-card">
@@ -55,9 +55,14 @@ export default function MovieCard({ poster_path, title, rating, type, id }) {
         </div>
         <CircularProgressbar
           styles={{
-            path:{
-              stroke: rating * 10 > 70 ?  `rgb(14, 181, 59) ` : rating * 10 > 50 ? `rgb(209, 206, 17)` : `rgb(212, 32, 25)` 
-            } ,
+            path: {
+              stroke:
+                rating * 10 > 70
+                  ? `rgb(14, 181, 59) `
+                  : rating * 10 > 50
+                  ? `rgb(209, 206, 17)`
+                  : `rgb(212, 32, 25)`,
+            },
             text: {
               fill: "var(--glow-green)",
 
@@ -70,10 +75,17 @@ export default function MovieCard({ poster_path, title, rating, type, id }) {
           minValue={0}
           maxValue={10}
         ></CircularProgressbar>
-        <button onClick={handleBookmark}>
-        <FontAwesomeIcon  className={`bookmark ${isBookmarked ? 'isboomarked' : ''}`} icon={faBookmark} />
-
-        </button>
+        {!handlebookmarkfunc && (
+          <button className="bookmark-btn" onClick={handleBookmark}>
+            <FontAwesomeIcon
+              className={`bookmark ${isBookmarked ? "isboomarked" : ""}`}
+              icon={faBookmark}
+            />
+          </button>
+        )}
+        {handlebookmarkfunc && (
+          <button className="remove-btn" onClick={()=>handlebookmarkfunc(id , type)} >Remove</button>
+        )}
       </div>
     </div>
   );
