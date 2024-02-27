@@ -291,7 +291,9 @@ body{
   background-color: #000;
   border-radius: 50% ; 
 }
-
+.movie-card .bookmark-btn{
+  background: transparent ;
+}
 
 /* Only Movies Component Styling */
 .only-movie{
@@ -337,8 +339,8 @@ body{
 .bookmark-box .movie-bookmark .helper{
   display: flex;
   justify-content: center;
-  gap: 10px ;
-  min-height: 100vh;
+  gap: 40px 20px ;
+  /* min-height: 100vh; */
   flex-wrap: wrap;
   align-items: center;
 }
@@ -347,6 +349,7 @@ body{
 .bookmark-box .movie-bookmark > h1{
   text-align: center;
   color: var(--primary-white) ;
+  margin-bottom: 2rem;
 
 }
 .bookmark-box .movie-card{

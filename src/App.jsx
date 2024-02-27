@@ -8,7 +8,7 @@ import Message from "./Components/Message";
 import NavBar from "./Components/NavBar";
 import SideBar from "./Components/SideBar";
 import { fetchAllMovies } from "./utils/helper";
-
+import SearchPage from './Components/SearchPage'
 
 const moviegenre = [
   "Action",
@@ -57,8 +57,8 @@ export default function App() {
           <Route path="message" element={<Message></Message>}>
             {" "}
           </Route>
-          {/* <Route path='/search/:id' element={}>
-            </Route> */}
+          <Route path='/search/:id' element={ <SearchPage></SearchPage> }>
+            </Route>
         </Routes>
       </div>
     </div>
