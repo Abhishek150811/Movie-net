@@ -21,7 +21,7 @@ export default function SearchPage() {
         setCurrData({movie , tv}) ; 
       }
       myfunc() ;
-      }, []) ; 
+      }, [params.id]) ; 
 
   return (
     <div className="bookmark-box">
