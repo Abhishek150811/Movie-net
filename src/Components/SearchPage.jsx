@@ -57,7 +57,7 @@ export default function SearchPage() {
               type='tv'
               poster_path={item.poster_path}
               title={item.title}
-              rating={item.rating}
+              rating={item.vote_average}
             ></MovieCard>;
           })}
         </div>

@@ -59,6 +59,7 @@ export default function App() {
           </Route>
           <Route path='/search/:id' element={ <SearchPage></SearchPage> }>
             </Route>
+          <Route path='/content/:id' ></Route>
         </Routes>
       </div>
     </div>
